@@ -1,0 +1,140 @@
+/* ============================================================
+   PIGEON MESSENGER - GLOBAL STYLES & DESIGN TOKENS
+   ============================================================
+   All colors are CSS custom properties so the theme switcher can
+   change them at runtime (light/dark mode + accent color) without
+   touching component styles. Dark-mode overrides live in the
+   [data-theme='dark'] block below.
+   ============================================================ */
+
+:root {
+  /* Accent (overridden live by the theme switcher via inline styles) */
+  --primary: #0084ff;
+  --primary-hover: #0077e6;
+  --primary-light: #e7f3ff;
+
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-secondary: #f0f2f5;
+  --bg-hover: #f2f2f2;
+  --bg-active: #e7f3ff;
+
+  /* Text */
+  --text-primary: #050505;
+  --text-secondary: #65676b;
+  --text-tertiary: #8a8d91;
+
+  /* Borders */
+  --border: #e4e6eb;
+  --border-light: #f0f0f0;
+
+  /* Message bubbles */
+  --msg-sent: var(--primary);
+  --msg-sent-text: #ffffff;
+  --msg-received: #e4e6eb;
+  --msg-received-text: #050505;
+
+  /* Status */
+  --online: #31a24c;
+  --danger: #e41e3f;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.16);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 50%;
+
+  --transition: 0.2s ease;
+
+  /* Layout */
+  --sidebar-width: 360px;
+  --header-height: 60px;
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #17181a;
+  --bg-secondary: #1f2124;
+  --bg-hover: #26282b;
+  --bg-active: #1d2b3d;
+
+  --text-primary: #e4e6eb;
+  --text-secondary: #b0b3b8;
+  --text-tertiary: #83868c;
+
+  --border: #2e3033;
+  --border-light: #26282b;
+
+  --msg-received: #3a3b3c;
+  --msg-received-text: #e4e6eb;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+/* Scrollbars (WebKit) - subtle, theme aware */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.55);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 100%;
+  }
+}
