@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0084ff" />
+    <title>Pigeon Messenger</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Applied synchronously (before Vue mounts / CSS paints) so the
+      // correct theme is used from the very first frame - avoids a
+      // flash of the wrong theme when the user has chosen "dark".
+      (function () {
+        try {
+          var stored = JSON.parse(localStorage.getItem('pigeon-theme') || '{}');
+          var mode = stored.mode || 'system';
+          var effective =
+            mode === 'system'
+              ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+              : mode;
+          document.documentElement.setAttribute('data-theme', effective);
+        } catch (e) {
+          /* ignore - default light theme applies */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
